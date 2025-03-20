@@ -6,21 +6,21 @@ import NewArrivalImg from "../images/new-arrival.png";
 const products = [
   {
     id: 1,
-    name: 'Logitech G320 Gaming Headphone',
+    name: 'Gaming Laptops',
     price: '$399.00',
     rating: 5,
     image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8',
   },
   {
     id: 2,
-    name: 'Olevs Fashion Waterproof Watch For Men',
+    name: 'Student Laptops',
     price: '$379.00',
     rating: 5,
     image: 'https://images.unsplash.com/photo-1584433305355-9cb73387fc61',
   },
   {
     id: 3,
-    name: 'Asus TUF Gaming H70 Lite Gaming Headset',
+    name: 'Professional Laptops',
     price: '$549.00',
     rating: 5,
     image: 'https://images.unsplash.com/photo-1733503711060-1df31554390f',
@@ -34,7 +34,7 @@ const NewArrivals = () => {
       <div className="grid grid-cols-7 gap-8">
         <div className="bg-gray-100 col-span-3 relative p-8 pb-0 rounded-2xl">
           <div className='absolute left-[40px] top-[40px]'>
-            <h3 className="text-2xl font-semibold mb-4">Samsung Galaxy Note20 Ultra 5G</h3>
+            <h3 className="text-2xl font-semibold mb-4">High-Performance Laptops</h3>
             <Button type="primary" icon={<ArrowRight />}>Shop Now</Button>
           </div>
           <div className='h-[540px] overflow-hidden rounded-xl'>
