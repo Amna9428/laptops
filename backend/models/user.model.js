@@ -55,14 +55,7 @@ const userSchema = new mongoose.Schema({
         },
         default: 'active'
     },
-    gender: {
-        type: String,
-        enum: {
-            values: ['male', 'female'],
-            message: '{VALUE} is not a valid gender'
-        },
-        required: [true, 'Please specify your gender']
-    }
+
 }, {
     timestamps: true
 });

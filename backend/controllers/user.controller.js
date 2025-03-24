@@ -10,7 +10,6 @@ const Signup = async (req, res) => {
     try {
 
         const data = req.body;
-        
 
         // check user already registered
         const already = await UserModel.findOne({ email: data.email });
@@ -21,10 +20,6 @@ const Signup = async (req, res) => {
                 errors: "Email is already registered"
             });
         }
-
-        console.log(data);
-
-        console.log(data.password);
 
         // hash the password
         const hashed = bcrypt.hashSync(data.password, 10);
@@ -74,7 +69,7 @@ const Login = async (req, res) => {
         if (user === null) {
             return res.status(403).json({
                 status: "Fail",
-                errors: "username or password is incorrect"
+                errors: "username or password is incorrect e"
             });
         }
 
@@ -87,7 +82,7 @@ const Login = async (req, res) => {
         if (passStatus === false) {
             return res.status(403).json({
                 status: "Fail",
-                errors: "username or password is incorrect"
+                errors: "username or password is incorrect p"
             });
         }
 
@@ -97,7 +92,8 @@ const Login = async (req, res) => {
         return res.status(200).json({
             status: "Ok",
             message: "Successfully logged in",
-            token: token
+            token: token,
+            user: user.name
         });
 
     } catch (err) {

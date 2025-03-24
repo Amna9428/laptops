@@ -1,11 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, User, ShoppingCart } from "lucide-react"
-import Logo from "../images/logo.png";
-import {useSelector} from "react-redux"
+import { Search, User, ShoppingCart, LogOut, LogIn } from "lucide-react"
+import Logo from "../images/Logo.png";
+import { useSelector, useDispatch } from "react-redux";
+import {logout} from "../redux/authSlice"
+import { Dropdown, Menu, Avatar } from 'antd';
 
 const Navbar = () => {
-  const cart = useSelector( state => state.cartState.cart);
+  const cart = useSelector(state => state.cartState.cart);
+  const { isLogin } = useSelector((state) => state.authSlice);
+  const dispatcher = useDispatch();
+
+  const userMenu = (
+    <Menu>
+        <Menu.Item key="profile">
+            <Link to="/profile" className="flex items-center">
+                <User size={16} className="mr-2" />
+                Profile
+            </Link>
+        </Menu.Item>
+        <Menu.Item key="orders">
+            <Link to="/orders" className="flex items-center">
+                <ShoppingCart size={16} className="mr-2" />
+                My Orders
+            </Link>
+        </Menu.Item>
+        <Menu.Item key="logout" onClick={() => dispatcher(logout())}>
+            <div className="flex items-center">
+                <LogOut size={16} className="mr-2" />
+                Logout
+            </div>
+        </Menu.Item>
+    </Menu>
+  );
+
   return (
     <nav className="bg-white px-6 py-4">
       <div className="flex items-center justify-between">
@@ -17,8 +45,8 @@ const Navbar = () => {
             <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-gray-900 mr-4">
               Home
             </Link>
-            <Link to="/products" className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-gray-900 mr-4">
-              Products
+            <Link to="/category" className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-gray-900 mr-4">
+              Category
             </Link>
             <Link to="/about" className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-gray-900 mr-4">
               About Us
@@ -45,9 +73,20 @@ const Navbar = () => {
               {cart.length} {/* Replace with dynamic product count */}
             </span>
           </Link>
-          <Link href="#" className="text-gray-700 hover:text-gray-900">
-            <User size={20} />
-          </Link>
+          {
+            (isLogin == true) ? (
+              <Dropdown overlay={userMenu} trigger={['click']}>
+                <div className="flex items-center text-gray-700 hover:text-gray-900 cursor-pointer">
+                  <Avatar 
+                    style={{ backgroundColor: '#87d068' }} 
+                    icon={<User size={16} />} 
+                    className="mr-2"
+                  />
+                  <span className='ms-1'>Account</span>
+                </div>
+              </Dropdown>
+            ) : <Link to='/login' className='curspor-pointer'><LogIn size={20} /></Link>
+          }
         </div>
       </div>
     </nav>
