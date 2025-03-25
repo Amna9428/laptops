@@ -1,36 +1,30 @@
-import React, { useContext, useState } from 'react'
-import { Form, Input, Button, Card } from "antd";
-import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import React, {useEffect } from 'react'
+import { Form, Input, Button, Card, message } from "antd";
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from "../redux/authSlice";
+import { useSelector, useDispatch } from "react-redux"
 
 const Login = () => {
-  const [errors, setErrors] = useState(null);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatcher = useDispatch();
+  const { loading, errors, isLogin } = useSelector((state) => state.authSlice);
 
 
   const onFinish = (values) => {
     console.log("Login Success:", values);
-
-
-    axios.post("http://localhost:5000/user/login", values).then((res) => {
-
-      if (res.data.status === "Ok") {
-        navigate("/dashboard")
-      }
-
-    }).catch((err) => {
-
-      console.log(err.response.data)
-      setErrors(err.response.data.errors);
-
-    }).finally(() => setLoading(false))
-
+    dispatcher(loginUser(values));
   };
+
+  useEffect(() => {
+    if (isLogin === true) {
+      message.success('Login successful!');
+      navigate("/dashboard");
+    }
+  }, [isLogin]);
 
 
   return (
-    <Card title="Login"  bordered={false} style={{ width: 500, margin: "auto", marginTop: 100 }}>
+    <Card title="Login" bordered={false} style={{ width: 500, margin: "auto", marginTop: 100 }}>
       {
         errors && <div className='bg-red-100 p-5 rounded-sm mb-4'>
           <h4 className='text-red-400 text-xl font-bold mt-4'>Errors occured</h4>
@@ -58,16 +52,7 @@ const Login = () => {
           <Input.Password size="large" placeholder="Password" />
         </Form.Item>
         <Form.Item>
-        <Button 
-  loading={loading} 
-  size="large" 
-  type="primary" 
-  htmlType="submit" 
-  block 
-  style={{ backgroundColor: "#389e0d", borderColor: "#389e0d" }}
->
-  Login
-</Button>
+          <Button loading={loading} size="large" type="primary" htmlType="submit" block>Login</Button>
         </Form.Item>
       </Form>
     </Card>

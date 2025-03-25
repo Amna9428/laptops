@@ -55,14 +55,14 @@ const Products = () => {
       name: "In Stock",
       selector: (row) => (
         <span
-          className={`px-2 py-1 text-sm rounded-full font-semibold ${row.inStock === true
+          className={`px-2 py-1 text-sm rounded-full font-semibold ${row.instock === true
             ? "bg-green-100 text-green-600"
             : row.status === false
               ? "bg-yellow-100 text-yellow-600"
               : "bg-red-100 text-red-600"
             }`}
         >
-          {row.inStock ? 'Available' : 'Out Of Stock'}
+          {row.instock ? 'Available' : 'Out Of Stock'}
         </span>
       ),
     },

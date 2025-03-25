@@ -245,10 +245,10 @@ const CreateProductForm = () => {
                     >
                         <Select size="large" placeholder="Select brand">
                             <Option value="Apple">Apple</Option>
-                            <Option value="Samsung">Dell</Option>
-                            <Option value="OnePlus">HP</Option>
-                            <Option value="Xiaomi">Lenovo</Option>
-                            <Option value="Realme">Acer</Option>
+                            <Option value="Dell">Dell</Option>
+                            <Option value="HP">HP</Option>
+                            <Option value="Lenovo">Lenovo</Option>
+                            <Option value="Acer">Acer</Option>
                         </Select>
                     </Form.Item>
 

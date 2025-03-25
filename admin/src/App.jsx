@@ -8,16 +8,16 @@ import Profile from "./pages/Profile";
 import Notfound from "./pages/Notfound";
 import DashboardHome from "./pages/DashboardHome";
 import DashboardLayout from "./pages/DashboardLayout";
-import Products from "./pages/dashboard/products"
+import Products from "./pages/dashboard/Products"
 import CreateProductForm from './pages/dashboard/CreateProductForm';
+import ProtectedRoute from './components/ProtectedRoute';
 function App() {
  
   return (
     <>
        <Routes>
         <Route index element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
           <Route index element={<DashboardHome />} />
           <Route path='products' element={<Products />} />
           <Route path="create" element={<CreateProductForm />} />
