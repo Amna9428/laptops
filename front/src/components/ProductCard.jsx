@@ -45,7 +45,7 @@ const ProductCard = ({ product }) => {
         </div>
         <p className="text-xl font-bold text-gray-900 mt-2">{product.price}</p>
         <div className="flex items-center space-x-2 mt-4">
-          <Button onClick={addProductIntoCart} color="danger" variant="solid">
+          <Button onClick={addProductIntoCart} color="primary" variant="solid">
             Add to cart
           </Button>
           {/* <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
