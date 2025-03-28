@@ -1,61 +1,54 @@
 import React from "react";
-import { Form, Input, Button, Card } from "antd";
-import { MailOutlined, UserOutlined, MessageOutlined } from "@ant-design/icons";
+import { Form, Input, Button } from "antd";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const ContactPage = () => {
   const onFinish = (values) => {
-    console.log("Form values:", values);
+    console.log("Received values: ", values);
   };
 
   return (
     <div>
       <Navbar/>
-<div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-      <Card title="Contact Us" className="w-full max-w-lg shadow-lg rounded-lg">
+ <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-lg">
+        <h2 className="text-2xl font-semibold text-center mb-4">Contact Us</h2>
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item
             label="Name"
             name="name"
-            rules={[{ required: true, message: "Please enter your name!" }]}
+            rules={[{ required: true, message: "Please enter your name" }]}
           >
-            <Input prefix={<UserOutlined />} placeholder="Your Name" />
+            <Input placeholder="Your Name" />
           </Form.Item>
-
+          
           <Form.Item
             label="Email"
             name="email"
-            rules={[{ required: true, type: "email", message: "Please enter a valid email!" }]}
+            rules={[{ required: true, message: "Please enter your email" }]}
           >
-            <Input prefix={<MailOutlined />} placeholder="Your Email" />
+            <Input type="email" placeholder="Your Email" />
           </Form.Item>
-
-          <Form.Item
-            label="Subject"
-            name="subject"
-            rules={[{ required: true, message: "Please enter a subject!" }]}
-          >
-            <Input placeholder="Subject" />
-          </Form.Item>
-
+          
           <Form.Item
             label="Message"
             name="message"
-            rules={[{ required: true, message: "Please enter your message!" }]}
+            rules={[{ required: true, message: "Please enter your message" }]}
           >
-            <Input.TextArea prefix={<MessageOutlined />} placeholder="Your Message" rows={4} />
+            <Input.TextArea rows={4} placeholder="Your Message" />
           </Form.Item>
-
+          
           <Form.Item>
             <Button type="primary" htmlType="submit" className="w-full">
               Send Message
             </Button>
           </Form.Item>
         </Form>
-      </Card>
+      </div>
     </div>
+   <Footer/>
     </div>
-    
   );
 };
 

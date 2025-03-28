@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="bg-[#e2e8f096] rounded-2xl p-4 flex-1 mx-auto">
+    <div className="bg-[#d0d6e396] rounded-2xl p-4 flex-1 mx-auto">
       <div className="relative">
         <img
           src={product.images[0]}
@@ -51,7 +51,7 @@ const ProductCard = ({ product }) => {
           {/* <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
               Add To Cart
             </button> */}
-          <Link to='/detail' className="bg-gray-200 p-2 rounded-lg hover:bg-gray-300">
+          <Link to={`/detail/${product._id}`} className="bg-gray-200 p-2 rounded-lg hover:bg-gray-300">
             <Eye size={20} />
           </Link>
           <button className="bg-gray-200 p-2 rounded-lg hover:bg-gray-300">

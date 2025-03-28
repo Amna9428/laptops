@@ -62,7 +62,7 @@ const Login = async (req, res) => {
     try {
 
         const data = req.body;
-
+console.log(data)
         // check user is registered
         const user = await UserModel.findOne({ email: data.email });
 

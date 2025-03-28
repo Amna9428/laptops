@@ -26,7 +26,7 @@ const FeaturesSection = () => {
         {features.map(feature => (
           <div 
             key={feature.id} 
-            className="bg-white p-6 rounded-xl shadow-md transition-transform transform hover:scale-105 flex flex-col items-center"
+            className="bg-gray-100 p-6 rounded-xl shadow-md transition-transform transform hover:scale-105 flex flex-col items-center"
           >
             <div className="text-5xl mb-3">{feature.icon}</div>
             <h3 className="text-lg font-semibold text-gray-800">{feature.title}</h3>

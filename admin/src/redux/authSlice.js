@@ -8,16 +8,15 @@ const API_URL = 'http://localhost:5000/api/user';
 // Thunk for login
 export const loginUser = createAsyncThunk('authSlice/login', async (credentials, { rejectWithValue }) => {
     try {
-
         const response = await axios.post(`${API_URL}/admin-login`, credentials);
+        console.log("Login API Response:", response.data); // Debugging log
         return response.data;
-
     } catch (error) {
-        console.log(error)
+        console.log("Login Error:", error.response?.data);
         return rejectWithValue(error.response?.data || 'Login failed. Please try again.');
-
     }
 });
+
 
 
 const authSlice = createSlice({

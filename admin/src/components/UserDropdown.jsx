@@ -12,7 +12,7 @@ const UserDropdown = () => {
   const user = {
     name: name,
     role: "Admin",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg", // Replace with actual avatar URL
+    avatar: "https://randomuser.me/api/portraits/women/25.jpg", // Replace with actual avatar URL
   };
 
   const menu = (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Home, BarChart, Box, CreditCard, ShoppingCart, Users, Calendar } from "lucide-react";
+import { Home, PenLine, Box, ShoppingBag, Users, MessageCircleMore } from "lucide-react";
 import { Link, NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -29,7 +29,7 @@ const Sidebar = () => {
                   ? 'bg-gray-500 text-white rounded-lg flex items-center p-3 space-x-2'
                   : 'flex items-center p-3 space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg'
               }>
-              <BarChart size={20} />
+              <PenLine size={20} />
               <span>Create Product</span>
             </NavLink>
           </li>
@@ -44,16 +44,24 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
-            <a href="#" className="flex items-center p-3 space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
-              <CreditCard size={20} />
-              <span>Transactions</span>
-            </a>
+          <NavLink to="/dashboard/feedback" end={true} className={({ isActive }) =>
+                isActive
+                  ? 'bg-gray-500 text-white rounded-lg flex items-center p-3 space-x-2'
+                  : 'flex items-center p-3 space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg'
+              }>
+              <MessageCircleMore size={20} />
+              <span>Feedback</span>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="flex items-center p-3 space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
-              <ShoppingCart size={20} />
-              <span>Order</span>
-            </a>
+            <NavLink to="/dashboard/orders" end={true} className={({ isActive }) =>
+                isActive
+                  ? 'bg-gray-500 text-white rounded-lg flex items-center p-3 space-x-2'
+                  : 'flex items-center p-3 space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg'
+              }>
+              <ShoppingBag size={20} />
+              <span>Orders</span>
+            </NavLink>
           </li>
           <li>
             <a href="#" className="flex items-center p-3 space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
@@ -61,18 +69,8 @@ const Sidebar = () => {
               <span>Customer</span>
             </a>
           </li>
-          <li>
-            <a href="#" className="flex items-center p-3 space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
-              <CreditCard size={20} />
-              <span>Payment</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="flex items-center p-3 space-x-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
-              <Calendar size={20} />
-              <span>Calendar</span>
-            </a>
-          </li>
+          
+         
         </ul>
       </nav>
     </div>

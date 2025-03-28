@@ -29,9 +29,9 @@ const Filters = () => {
             setLoading(true);
             const params = new URLSearchParams();
 
-            if (filters.minPrice) params.append('minPrice', filters.minPrice);
-            if (filters.maxPrice) params.append('maxPrice', filters.maxPrice);
-            if (filters.brand) params.append('brand', filters.brand.join(","));
+            // if (filters.minPrice) params.append('minPrice', filters.minPrice);
+            // if (filters.maxPrice) params.append('maxPrice', filters.maxPrice);
+            // if (filters.brand) params.append('brand', filters.brand.join(","));
             if (filters.ram.length > 0) params.append('ram', filters.ram.join(','));
             if (filters.storage.length > 0) params.append('storage', filters.storage.join(','));
 

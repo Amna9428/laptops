@@ -11,6 +11,8 @@ import DashboardLayout from "./pages/DashboardLayout";
 import Products from "./pages/dashboard/Products"
 import CreateProductForm from './pages/dashboard/CreateProductForm';
 import ProtectedRoute from './components/ProtectedRoute';
+import FeedbackList from './pages/dashboard/FeedbackList';
+import AllOrders from './pages/dashboard/AllOrders';
 function App() {
  
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route index element={<DashboardHome />} />
           <Route path='products' element={<Products />} />
           <Route path="create" element={<CreateProductForm />} />
+          <Route path="feedback" element={<FeedbackList/>} />
+          <Route path="orders" element={<AllOrders/>} />
           <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
         </Route>

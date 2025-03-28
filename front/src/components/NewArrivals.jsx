@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Rate } from 'antd';
 import { ArrowRight } from 'lucide-react';
-import NewArrivalImg from "../images/new-arrival.png";
+import NewArrivalImg from "../images/img4.jpg";
 
 const products = [
   {
@@ -29,40 +29,37 @@ const products = [
 
 const NewArrivals = () => {
   return (
-    <div className="p-8">
-      <h2 className="text-3xl font-bold mb-6">New Arrivals</h2>
-      <div className="grid grid-cols-7 gap-8">
-        <div className="bg-gray-100 col-span-3 relative p-8 pb-0 rounded-2xl">
-          <div className='absolute left-[40px] top-[40px]'>
-            <h3 className="text-2xl font-semibold mb-4">High-Performance Laptops</h3>
-            <Button type="primary" icon={<ArrowRight />}>Shop Now</Button>
-          </div>
-          <div className='h-[540px] overflow-hidden rounded-xl'>
-            <img
-              src= {NewArrivalImg}
-              alt="Samsung Galaxy Note20 Ultra 5G"
-              className="w-full object-contain"
-            />
-          </div>
-        </div>
+    <div className="p-8 space-y-10">
+      <h2 className="text-3xl font-bold mb-4">Latest Additions</h2>
 
-        <div className="col-span-4 pt-8 space-y-8">
-          {products.map((product) => (
-            <div key={product.id} className="flex items-center justify-between bg-white p-4 rounded-2xl shadow">
-              <div className="flex items-center space-x-4">
-                <img src={product.image} alt={product.name} className="w-16 h-16 rounded-lg" />
-                <div>
-                  <h4 className="text-lg font-medium py-1.5">{product.name}</h4>
-                  <Rate disabled defaultValue={product.rating} />
-                  <p className="text-xl font-bold mt-1 py-1">{product.price}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-          <Button type="primary" size='large' icon={<ArrowRight />} className="w-full">View All Products</Button>
-        </div>
+      {/* Banner Section */}
+      <div className="relative bg-gray-100 rounded-2xl overflow-hidden">
+        <img
+          src={NewArrivalImg}
+          alt="High Performance Laptops"
+          className="w-full h-96 object-cover rounded-2xl max-h-full max-w-full"
+        />
+        
+      </div>
+
+      {/* Product Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {products.map((product) => (
+          <div key={product.id} className="bg-[#d0d6e396] p-6 rounded-2xl shadow hover:shadow-lg transition">
+            <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-lg mb-4" />
+            <h4 className="text-xl font-medium mb-2">{product.name}</h4>
+            <Rate disabled defaultValue={product.rating} />
+            <p className="text-xl font-bold mt-2">{product.price}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* View All Button */}
+      <div className="text-center pt-4">
+        <Button type="primary" size="large" icon={<ArrowRight />}>View All Products</Button>
       </div>
     </div>
   );
 };
+
 export default NewArrivals;

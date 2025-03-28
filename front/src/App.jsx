@@ -10,6 +10,8 @@ import UserOrdersPage from './pages/UserOrdersPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import ContactPage from './Pages/ContactPage'
 import AboutUs from './pages/AboutUs'
+import FAQ from './pages/FAQ'
+
 
 function App() {
 
@@ -20,8 +22,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<ContactPage/>} />
           <Route path="/about" element={<AboutUs/>} />
+          <Route path="/faq" element={<FAQ/>} />
           <Route path='/signup' element={<Signup />} />
-          <Route path="/detail" element={<ProductDetailPage />} />
+          <Route path="/detail/:id" element={<ProductDetailPage />} />
           <Route path='/products' element={<Filters />} />
           <Route path='/cart' element={<ShopingCartPage />} />
           <Route path='/orders' element={ <ProtectedRoute><UserOrdersPage /></ProtectedRoute>} />

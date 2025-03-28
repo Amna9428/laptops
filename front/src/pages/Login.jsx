@@ -51,7 +51,9 @@ const Login = () => {
                     <Input.Password size="large" placeholder="Password" />
                 </Form.Item>
                 <Form.Item>
-                    <Button loading={loading} size="large" type="primary" htmlType="submit" block>Login</Button>
+                <Button loading={loading} size="large" type="default" htmlType="submit" block style={{ backgroundColor: "green", borderColor: "green", color: "white" }}>
+  Login
+</Button>
                 </Form.Item>
             </Form>
             <Link to="/signup">Don't have an account? Sign up</Link>

@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Row, Col, Typography } from "antd";
 import { LaptopOutlined, SafetyOutlined, CustomerServiceOutlined } from "@ant-design/icons";
 import Navbar from "../components/Navbar";
-
+import Footer from "../components/Footer";
 const { Title, Paragraph } = Typography;
 
 const AboutUs = () => {
@@ -53,6 +53,7 @@ const AboutUs = () => {
         </Col>
       </Row>
     </div>
+    <Footer />
     </div>
     
   );

@@ -49,6 +49,24 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+
+// products by id
+const getProductById = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    res.json(product);
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+
 // Update a product by ID
 const updateProduct = async (req, res) => {
   try {
@@ -88,6 +106,7 @@ const updateProduct = async (req, res) => {
 // Delete a product by ID
 const deleteProduct = async (req, res) => {
   try {
+    
     // Check if user is admin
     if (req.role !== 'admin') {
       return res.status(403).json({
@@ -119,8 +138,8 @@ const deleteProduct = async (req, res) => {
 
 // GET /products with filters
 const filterProducts = async (req, res) => {
-  const { minPrice, maxPrice, brand, ram, storage } = req.query;
 
+  const { minPrice, maxPrice, brand, ram, storage } = req.query;
   let filter = {};
 
   if (minPrice && maxPrice) {
@@ -154,6 +173,7 @@ const filterProducts = async (req, res) => {
       products: products
     });
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: 'Server error', error });
   }
 };
@@ -163,5 +183,6 @@ module.exports = {
   getAllProducts,
   updateProduct,
   deleteProduct,
-  filterProducts
+  filterProducts,
+  getProductById
 }; 

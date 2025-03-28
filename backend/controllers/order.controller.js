@@ -21,7 +21,7 @@ const createOrder = async (req, res) => {
 const getOrdersByUserId = async (req, res) => {
     try {
         const userId = req.userId;
-        
+
         const orders = await orderModel.find({ userId })
             .sort({ createdAt: -1 }) // Sort by most recent first
             .populate('items.productId', 'name price images'); // Populate product details
@@ -32,8 +32,24 @@ const getOrdersByUserId = async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch orders' });
     }
 };
+// get all orders
+const getAllOrders = async (req, res) => {
+    try {
+        const orders = await orderModel.find()
+            .sort({ createdAt: -1 }) // Sort by most recent first
+            .populate('items.productId', 'name price images') // Populate product details
+            .populate('userId', 'name email'); // Populate user details
+
+        res.status(200).json(orders);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ error: 'Failed to fetch orders' });
+    }
+};
+
 
 module.exports = {
     createOrder,
-    getOrdersByUserId
+    getOrdersByUserId,
+    getAllOrders
 };

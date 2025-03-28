@@ -41,10 +41,9 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex space-x-6">
           <Link to="/" className="hover:text-gray-300 font-medium">Home</Link>
-          <Link to="/category" className="hover:text-gray-300 font-medium">Category</Link>
+          <Link to="/products" className="hover:text-gray-300 font-medium">Products</Link>
           <Link to="/about" className="hover:text-gray-300 font-medium">About Us</Link>
           <Link to="/faq" className="hover:text-gray-300 font-medium">FAQ</Link>
-          <Link to="/blog" className="hover:text-gray-300 font-medium">Blog</Link>
           <Link to="/contact" className="hover:text-gray-300 font-medium">Contact</Link>
         </div>
         <div className="flex items-center space-x-4">

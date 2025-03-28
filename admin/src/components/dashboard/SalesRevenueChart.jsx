@@ -6,30 +6,28 @@ import { useSelector } from 'react-redux';
 const SalesRevenueAreaChart = () => {
   const [salesData, setSalesData] = useState([]);
   const [revenueData, setRevenueData] = useState([]);
-  const token = useSelector(state => state.authSlice.token)
-  // Sample data - replace with your actual data
+  const token = useSelector(state => state.authSlice.token);
+
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-
-  useEffect( () => {
+  useEffect(() => {
     const fetchCardData = async () => {
       try {
-           const response = await axios.get("http://localhost:5000/api/admin/totalSalesRevenue", {
-            headers: {
-              "Authorization": `Bearer ${token}`
-            }
-           });
-           console.log(response.data);
-           setSalesData(response.data.salesData);
-           setRevenueData(response.data.revenueData);
+        const response = await axios.get("http://localhost:5000/api/admin/totalSalesRevenue", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+        console.log(response.data);
+        setSalesData(response.data.salesData);
+        setRevenueData(response.data.revenueData);
       } catch (error) {
         console.log(error.message);
       }
-    }
+    };
 
     fetchCardData();
-  }, []);
-
+  }, [token]);
 
   const options = {
     chart: {
@@ -44,26 +42,33 @@ const SalesRevenueAreaChart = () => {
       enabled: false,
     },
     stroke: {
-      curve: 'monotoneCubic',
-      width: 1,
+      curve: 'smooth',
+      width: 2,
     },
     title: {
       text: 'Monthly Sales & Revenue',
       align: 'left',
       style: {
-        fontSize: '18px',
-        fontWeight: 'normal',
+        fontSize: '20px',
+        fontWeight: 'bold',
+        color: '#333',
       },
     },
     xaxis: {
       categories: months,
       title: {
         text: 'Month',
+        style: {
+          color: '#666',
+        },
       },
     },
     yaxis: {
       title: {
         text: 'Amount ($)',
+        style: {
+          color: '#666',
+        },
       },
       labels: {
         formatter: function (val) {
@@ -80,17 +85,20 @@ const SalesRevenueAreaChart = () => {
     },
     legend: {
       position: 'top',
+      labels: {
+        colors: '#444',
+      },
     },
     fill: {
       type: 'gradient',
       gradient: {
         shadeIntensity: 1,
-        opacityFrom: 0.7,
-        opacityTo: 0.9,
+        opacityFrom: 0.5,
+        opacityTo: 0.8,
         stops: [0, 90, 100],
       },
     },
-    colors: ['#008FFB', '#00E396'],
+    colors: ['#FF5733', '#C70039'], // Updated colors
   };
 
   const series = [
@@ -105,7 +113,7 @@ const SalesRevenueAreaChart = () => {
   ];
 
   return (
-    <div className="sales-revenue-area-chart bg-white shadow-sm mb-5 rounded-lg p-6">
+    <div className="sales-revenue-area-chart bg-gray-100 shadow-lg rounded-xl p-8 border border-gray-300">
       <ReactApexChart
         options={options}
         series={series}
