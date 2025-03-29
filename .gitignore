@@ -1,3 +1,6 @@
 admin/node_modules
 backend/node_modules
 front/node_modules
+# MONGODB_URI = mongodb://localhost:27017/laptops
+MONGODB_URI=mongodb+srv://Amna:LLInaciDTaSKuOtB@cluster0.6dkxxqm.mongodb.net/Laptops
+JWT_KEY = shgk/69jgkgflhjkNK
